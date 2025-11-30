@@ -44,6 +44,10 @@ jobs:
           PROXY_SOCKS5_PORT: ${{ secrets.PROXY_SOCKS5_PORT }}
           PROXY_HTTPS_STRING: ${{ secrets.PROXY_HTTPS_STRING }}
       - run: sh .github/workflows/regression.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: data
+          path: ./data/json/All.json
       - uses: stefanzweifel/git-auto-commit-action@v7
         env:
           NODE_OPTIONS: '--max_old_space_size=8192'
